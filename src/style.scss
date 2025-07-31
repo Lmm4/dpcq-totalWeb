@@ -1,0 +1,343 @@
+body {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.dark {
+  --prism-scheme: dark;
+  --prism-foreground: #a6accd;
+  --prism-background: #181818;
+  --prism-background_box: #000;
+  --prism-topbackground: #18222c;
+  --prism-text-color: #e5eaf3;
+  --prism-comment: #758575;
+  --prism-string: #c3e88d;
+  --prism-literal: #429988;
+  --prism-keyword: #89ddff;
+  --prism-boolean: #6394bf;
+  --prism-number: #6394bf;
+  --prism-variable: #c2b36e;
+  --prism-function: #82aaff;
+  --prism-deleted: #bc6066;
+  --prism-class: #54b1bf;
+  --prism-builtin: #3375b9;
+  --prism-property: #c792ea;
+  --prism-namespace: #db889a;
+  --prism-punctuation: #89ddff;
+  --prism-decorator: #bd8f8f;
+  --prism-regex: #ab5e3f;
+  --prism-json-property: #6b8b9e;
+  --prism-line-number: #888888;
+  --prism-line-number-gutter: #eeeeee;
+  --prism-line-highlight-background: #444444;
+  --prism-selection-background: #444444;
+  --prism-inline-background: #2d2d2d;
+  --prism-tag-bottom_background: #4c4d4f;
+  --pris-add: #141414;
+  --theme: #434343;
+  --auto: #f5f6f8;
+  --tag: #000;
+  --border: #414243;
+}
+
+.light {
+  --prism-background: #f5f6f8;
+  --prism-topbackground: #fff;
+  --prism-background_box: #fff;
+  --prism-text-color: #000;
+  --prism-line-highlight-background: #fff;
+  --prism-tag-bottom_background: #d8dce5;
+  --pris-add: #f5f6f8;
+  --theme: #cccccc;
+  --auto: #000;
+  --tag: #d8dce5;
+  --border: #e4e7ed;
+}
+
+
+.cursor {
+  cursor: pointer;
+}
+
+/* 文本居右 */
+.tr {
+  text-align: right;
+}
+
+/* 文本居中 */
+.tc {
+  text-align: center;
+}
+
+.df {
+  display: flex;
+}
+
+/* 弹性布局  上下居中 不换行*/
+.dfc {
+  display: flex;
+  align-items: center;
+}
+
+/* 弹性布局  上下居中 水平居中*/
+.dfcc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 弹性布局  上下居中 换行*/
+.dfcw {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* 弹性布局  上下居中 左右居中 改变主轴 */
+.dfcfd {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* 弹性布局  上下居下 */
+.dfs {
+  display: flex;
+  align-items: flex-end;
+}
+
+/* 弹性布局  左右 上下居中 */
+.dfcsb {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 宽度100%-110px */
+.cw100 {
+  width: calc(100% - 110px);
+}
+
+/* 宽度100% */
+.w100 {
+  width: 100% !important;
+}
+
+/* 提交按钮居右下角 */
+.dfcR {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* 字体加粗 */
+.fwb {
+  font-weight: bold;
+}
+
+.fw6{
+  font-weight: 600;
+}
+
+/* 图标大小 */
+.i22 {
+  width: 22px;
+  height: 22px;
+}
+
+.i20 {
+  width: 20px;
+  height: 20px;
+}
+
+/* 字体800 */
+.fw8 {
+  font-weight: 800;
+}
+
+/* 字体大小 */
+.f12 {
+  font-size: 12px;
+}
+
+.f14 {
+  font-size: 14px;
+}
+
+.f16 {
+  font-size: 16px;
+}
+
+.f18 {
+  font-size: 18px;
+}
+
+.f20 {
+  font-size: 20px;
+}
+
+.f22 {
+  font-size: 22px;
+}
+
+.f24 {
+  font-size: 24px;
+}
+
+.f26 {
+  font-size: 26px;
+}
+
+.f28 {
+  font-size: 28px;
+}
+
+.f30 {
+  font-size: 30px;
+}
+
+.f40 {
+  font-size: 40px;
+}
+
+/* 字体颜色 */
+.c018 {
+  color: #001824;
+}
+
+.c9d {
+  color: #9da4a7;
+}
+
+.c6b {
+  color: #6b7072;
+}
+
+.c14c {
+  color: #c1c4cd;
+}
+
+.cfff {
+  color: #fff !important;
+}
+
+.cd15 {
+  color: #d15220;
+}
+
+.c079 {
+  color: #079eec;
+}
+
+.c30d {
+  color: #30d3af;
+}
+
+.c9fc{
+  color: #9FCEFF;
+}
+.cddd{
+  color: #DDDEE0;
+}
+
+.cb1b{
+  color: #B1B3B7;
+}
+
+.ce8a {
+  color: #e8a617 !important;
+}
+
+.cff2 {
+  color: #ff2a00;
+}
+
+.cb49 {
+  color: #b49d2b;
+}
+
+/* 背景颜色 */
+.bff2 {
+  background-color: #ff2a00;
+}
+
+/* 右外边距 */
+.mr180 {
+  margin-right: 180px;
+}
+
+.mr20 {
+  margin-right: 20px;
+}
+
+.mr40 {
+  margin-right: 40px;
+}
+
+.mr10 {
+  margin-right: 10px;
+}
+
+.mr5 {
+  margin-right: 5px;
+}
+
+/* 上外边距 */
+
+.mt90 {
+  margin-top: 90px;
+}
+
+.mt40 {
+  margin-top: 40px;
+}
+
+.mt30 {
+  margin-top: 30px;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+
+/* 左外边距 */
+.ml110 {
+  margin-left: 110px;
+}
+
+.ml20 {
+  margin-left: 20px;
+}
+
+.ml10 {
+  margin-left: 10px;
+}
+
+.ml5 {
+  margin-left: 5px;
+}
+
+/* 下外边距 */
+.mb40 {
+  margin-bottom: 40px;
+}
+
+.mb30 {
+  margin-bottom: 30px;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+.mb10{
+  margin-bottom: 10px;
+}
+.mb5{
+  margin-bottom: 5px;
+}
