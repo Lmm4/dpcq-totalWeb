@@ -2,13 +2,15 @@
     <el-dialog v-model="show" title="添加大股东" width="500" @close="addFormRef.resetFields()">
         <el-form ref="addFormRef" :model="formData" :rules="rules" label-width="auto" label-position="top">
             <el-form-item label="大股东域名配置" prop="bigShareholderBackendUrl">
-                <el-input v-model="formData.bigShareholderBackendUrl" placeholder="请输入大股东域名" />
+                <el-select v-model="formData.bigShareholderBackendUrl" placeholder="请选择大股东域名" clearable>
+                    <el-option v-for="item in options" :key="item.id" :label="item.value" :value="item.value" />
+                </el-select>
             </el-form-item>
             <el-form-item label="大股东昵称" prop="realName">
                 <el-input v-model="formData.realName" placeholder="请输入股东昵称" />
             </el-form-item>
             <el-form-item label="大股东账号" prop="username">
-                <el-input v-model="formData.username" placeholder="请输入大股东账号" />
+                <el-input v-model="formData.username" maxlength="12" placeholder="请输入大股东账号" />
             </el-form-item>
             <el-form-item label="大股东密码" prop="password">
                 <el-input v-model="formData.password" placeholder="请输入大股东密码" />
@@ -32,8 +34,8 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits, computed, ref, reactive } from "vue";
-import { addMajorShareholder } from "@/api/page/majorShareholderConfig.js";
+import { defineProps, defineEmits, computed, ref, reactive, watch } from "vue";
+import { addMajorShareholder, getDomainConfig } from "@/api/page/majorShareholderConfig.js";
 import { toDecimal } from '@/utils/utils.js';
 import { ElMessage } from "element-plus";
 
@@ -45,6 +47,8 @@ const props = defineProps({
         required: true
     },
 })
+
+const options = ref([]);
 
 const addFormRef = ref(null);
 const loading = ref(null);
@@ -66,7 +70,12 @@ const rules = reactive({
     ],
     username: [
         { required: true, message: '请输入大股东账号', trigger: 'blur' },
-        { min: 4, message: '账号最少为4位', trigger: 'blur' },
+        {
+            pattern: /^(?![0-9]+$)(?![a-zA-Z]+$)[a-zA-Z0-9]{4,12}$/,
+            message: '账号必须为4-12位字母和数字组合，不能纯字母或纯数字',
+            trigger: 'blur'
+        }
+
     ],
     password: [
         { required: true, message: '请输入大股东密码', trigger: 'blur' },
@@ -85,6 +94,12 @@ const show = computed({
         emit('update:show', value)
     }
 })
+
+// 获取域名配置
+const getDomainConfigFn = async () => {
+    const res = await getDomainConfig();
+    options.value = res;
+}
 
 // 确定新增
 const sure = () => {
@@ -107,6 +122,12 @@ const sure = () => {
         }
     })
 }
+
+watch(() => props.show, (newVal) => {
+    if (newVal) {
+        getDomainConfigFn();
+    }
+})
 </script>
 
 <style lang="scss" scoped>

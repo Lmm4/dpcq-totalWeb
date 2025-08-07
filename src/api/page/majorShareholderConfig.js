@@ -53,3 +53,20 @@ export function generateBill(data) {
     data,
   });
 }
+
+// 重置下级密码
+export function resetShareholderPassword(data) {
+  return request({
+    url: "/partner/admin/reset-password",
+    method: "POST",
+    data,
+  });
+}
+
+// 获取域名配置
+export function getDomainConfig() {
+  return request({
+    url: "/partner/domain/list",
+    method: "GET",
+  });
+}

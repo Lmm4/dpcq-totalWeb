@@ -184,11 +184,39 @@ const state = reactive({
       name: "渠道留存",
       hasChildren: false
     },
+    // {
+    //   id: "liveCasino",
+    //   icon: "game",
+    //   name: "视讯游戏",
+    //   hasChildren: false
+    // },
     {
-      id: "liveCasino",
-      icon: "game",
-      name: "视讯游戏",
-      hasChildren: false
+      id: "orderDataManage",
+      icon: "finance",
+      name: "注单数据管理",
+      hasChildren: true,
+      children: [
+        {
+          id: "fgGame",
+          name: "FG游戏",
+        },
+        {
+          id: "g9Game",
+          name: "9G游戏",
+        },
+        {
+          id: "dbPeopleGame",
+          name: "DB真人",
+        },
+        {
+          id: "astarGame",
+          name: "亚星游戏",
+        },
+        {
+          id: "wmGame",
+          name: "WM游戏",
+        }
+      ]
     },
     {
       id: "majorShareholderConfig",

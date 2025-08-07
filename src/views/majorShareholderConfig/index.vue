@@ -20,10 +20,13 @@
             <template #option="{ row }">
                 <el-button type="primary" link @click="monthBillBtn(row.adminId)">月度账单</el-button>
                 <el-button type="primary" link @click="configBtn(row)">配置</el-button>
+                <el-button type="primary" link @click="resetBtn(row.adminId)">密码重置</el-button>
             </template>
         </Table>
         <monthBill v-else @go-back="state.pageIndex = 0" :adminId="state.adminId" />
         <deployRatio v-model:show="state.ratioShow" :bigInfo="state.bigInfo" @refresh="getData" />
+        <passwordReset v-model:show="state.resetShow" :adminId="state.adminId" @refresh="getData" />
+
     </div>
 </template>
 
@@ -33,11 +36,13 @@ import Table from "@/components/table.vue";
 import Search from "./Search.vue";
 import deployRatio from "./deployRatio.vue";
 import monthBill from "./monthBill/index.vue";
+import passwordReset from "./passwordReset.vue";
 import { getMajorShareholderList } from "@/api/page/majorShareholderConfig.js";
 import { ElMessage, dayjs } from 'element-plus';
 
 const columns = [
     { prop: "adminId", align: "center", label: "大股东编号", width: "160" },
+    { prop: "username", align: "center", label: "大股东账号", width: "160" },
     { prop: "realName", align: "center", label: "大股东昵称", width: "160" },
     { prop: "shareholderCount", align: "center", label: "大股东旗下股东数量", width: "160" },
     { prop: "agentCount", align: "center", label: "股东下级代理数量", width: "160" },
@@ -45,13 +50,13 @@ const columns = [
     { prop: "finalWinLoss", align: "center", label: "总输赢金额", width: "160" },
     { prop: "totalRebateAmount", align: "center", label: "总返水金额", width: "160" },
     { prop: "bigShareholderProfitPercent", align: "center", label: "大股东分润比例", width: "160" },
-    { prop: "shareholderProfitPercent", align: "center", label: "股东分润比例", width: "160" },
-    { prop: "agentProfitPercent", align: "center", label: "代理分润比例", width: "160" },
+    // { prop: "shareholderProfitPercent", align: "center", label: "股东分润比例", width: "160" },
+    // { prop: "agentProfitPercent", align: "center", label: "代理分润比例", width: "160" },
     { prop: "bigShareholderUrl", align: "center", label: "大股东后台链接", width: "200" },
-    { prop: "shareholderUrl", align: "center", label: "股东后台链接", width: "200" },
-    { prop: "agentUrl", align: "center", label: "代理后台链接", width: "200" },
+    // { prop: "shareholderUrl", align: "center", label: "股东后台链接", width: "200" },
+    // { prop: "agentUrl", align: "center", label: "代理后台链接", width: "200" },
     { prop: "statAddAt", align: "center", label: "股东添加时间", width: "200" },
-    { prop: "option", align: "center", label: "操作", width: "180", fixed: "right" },
+    { prop: "option", align: "center", label: "操作", width: "220", fixed: "right" },
 ]
 
 const state = reactive({
@@ -69,6 +74,8 @@ const state = reactive({
         subProfit: null,//大股东分润比例
     },//大股东信息
     adminId: "",//大股东id
+    resetShow: false,
+
 })
 
 const search = (data) => {
@@ -86,6 +93,12 @@ const getData = async () => {
         state.loading = false;
     }
 };
+
+// 密码重置
+const resetBtn = (adminId) => {
+    state.adminId = adminId;
+    state.resetShow = true;
+}
 
 // 月度账单
 const monthBillBtn = (adminId) => {

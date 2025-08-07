@@ -67,7 +67,7 @@
         <div class="dfcR mt20">
             <el-pagination v-model:current-page="state.gameFrom.page" v-model:page-size="state.gameFrom.size"
                 :page-sizes="[5, 10, 20, 25]" layout="total, sizes, prev, pager, next, jumper"
-                :total="state.monthTotal" />
+                :total="state.gameTotal" />
         </div>
         <generateBill v-model:show="state.billShow" :billInfo="state.billInfo" />
     </div>
@@ -135,6 +135,7 @@ const state = reactive({
         username: "",
         page: 1,
         size: 10,
+        adminId: props.adminId
     },
     gameData: [],
     gameTotal: 0,
@@ -205,6 +206,21 @@ onMounted(() => {
 .month_bill {
     width: 100%;
     height: 100%;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        /*滚动条整体样式*/
+        width: 0;
+        /*高宽分别对应横竖滚动条的尺寸*/
+        height: 0;
+    }
+
+    // &::-webkit-scrollbar-thumb {
+    //     /*滚动条里面小方块*/
+    //     border-radius: 0;
+    //     // -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    //     background: #e1e2e5;
+    // }
 
     .time_box {
         max-width: 400px;

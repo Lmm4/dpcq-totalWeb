@@ -48,8 +48,8 @@
     </el-dialog>
     <div class="dfcc w100 mask" v-if="state.captchaShow" @click="state.captchaShow = false">
       <!-- <div id="recaptcha-container"></div> -->
-      <VueRecaptcha v-if="state.captchaShow" sitekey="6LckLYIrAAAAAOtg8z5URMAG-4MFAj3iE99o5CgK" ref="recaptcha"
-        size="normal" theme="light" @verify="onVerify" />
+      <VueRecaptcha v-if="state.captchaShow" :sitekey="googleKey" ref="recaptcha" size="normal" theme="light"
+        @verify="onVerify" />
     </div>
   </div>
 </template>
@@ -64,6 +64,7 @@ import Router, { resetRouter } from "@/router/index";
 import { getDictLabel } from '@/utils/dict';
 import VueRecaptcha from 'vue3-recaptcha2';
 import { getCaptcha, checkGoogle } from "@/api/page/login.js";
+const googleKey = import.meta.env.VITE_GOOGLE_KEY;
 
 
 
@@ -72,7 +73,7 @@ const loginForm = reactive({
   username: "",
   password: "",
   verifyId: '',
-  verifyValue: []
+  verifyValue: ''
 })
 const rules = reactive({
   username: [
@@ -112,7 +113,7 @@ const login = () => {
 }
 
 const onVerify = async (token) => {
-  console.log('✅ 验证通过，token:', token);
+  // console.log('✅ 验证通过，token:', token);
   const res = await checkGoogle({
     key: loginForm.username,
     token: localGet("uuid"),
@@ -133,8 +134,6 @@ const renderRecaptcha = () => {
     sitekey: '6LeAgY4rAAAAAD8v4scYcgKIlVtI36BhFI9E6epg', // 从 Google 管理后台获取
     callback: async (token) => {
       // console.log('✅ 验证通过，token:', token);
-
-      console.log(res);
       if (res.success) {
         loginForm.verifyId = localGet("uuid");
         handleLogin();
@@ -152,6 +151,7 @@ const renderRecaptcha = () => {
 const handleLogin = async () => {
   // if (loginForm.verifyValue.length < 1) return ElMessage.error('请选择图片！');
   // state.loginLoading = true;
+
   try {
     await userInfo.login(loginForm)
   } catch (error) {

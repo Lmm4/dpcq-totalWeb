@@ -20,14 +20,17 @@ export const userInfoStore = defineStore("userInfo", {
     // 登录
     login(data) {
       return new Promise((resolve, reject) => {
-        data.verifyValue = data.verifyValue.join(",");
+        // data.verifyValue = data.verifyValue.join(",");
         login(data)
           .then((res) => {
+            console.log(10010);
+
             res.expireTime = dayjs().valueOf() + 540 * 1000;
             localSet("tokenObject", res);
             Router.push({
               name: "index",
             });
+            resolve();
           })
           .catch((err) => {
             reject(err);
