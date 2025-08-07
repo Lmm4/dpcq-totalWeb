@@ -7,13 +7,13 @@
                 </el-select>
             </el-form-item>
             <el-form-item label="大股东昵称" prop="realName">
-                <el-input v-model="formData.realName" placeholder="请输入股东昵称" />
+                <el-input v-model="formData.realName" maxlength="16" placeholder="请输入股东昵称" />
             </el-form-item>
             <el-form-item label="大股东账号" prop="username">
                 <el-input v-model="formData.username" maxlength="12" placeholder="请输入大股东账号" />
             </el-form-item>
             <el-form-item label="大股东密码" prop="password">
-                <el-input v-model="formData.password" placeholder="请输入大股东密码" />
+                <el-input v-model="formData.password" maxlength="32" placeholder="请输入大股东密码" />
             </el-form-item>
             <el-form-item label="大股东分润比例" prop="bigShareholderProfitRatio">
                 <el-input-number class="w100" v-model="formData.bigShareholderProfitRatio" placeholder="请输入大股东分润比例"
@@ -79,6 +79,7 @@ const rules = reactive({
     ],
     password: [
         { required: true, message: '请输入大股东密码', trigger: 'blur' },
+        { min: 6, max: 32, message: '密码长度必须在6-20位之间', trigger: 'blur' }
     ],
     bigShareholderProfitRatio: [
         { required: true, message: '请输入大股东分润比例', trigger: 'blur' },
