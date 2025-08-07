@@ -40,7 +40,7 @@ const columns = [
     { prop: "rollin.bet", align: "center", label: "本局压分", width: "140" },
     { prop: "rollin.win", align: "center", label: "本局得分", width: "140" },
     { prop: "rollin.amount", align: "center", label: "结算金额", width: "140" },
-    { prop: "rollin.validbet", align: "center", label: "有效投注额", width: "140" },
+    { prop: "rollin.validbet", align: "center", label: "有效流水", width: "140" },
     { prop: "datetime", align: "center", label: "结算时间", width: "180" },
     { prop: "rollin.mtcode", align: "center", label: "交易代码", width: "200" },
     { prop: "rollin.round", align: "center", label: "游戏回合编号", width: "180" },

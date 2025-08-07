@@ -28,7 +28,7 @@
             <el-button type="primary" @click="refresh(formRef)" icon="Refresh">重置</el-button>
         </el-form-item>
         <el-form-item>
-            <div>根据所选累计的有效投注额：{{ state.selectData }}</div>
+            <div>根据所选累计的有效流水：{{ state.selectData }}</div>
         </el-form-item>
     </el-form>
 </template>
