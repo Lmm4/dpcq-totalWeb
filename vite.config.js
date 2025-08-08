@@ -38,8 +38,8 @@ export default defineConfig({
   build: {
     /** 打包后静态资源目录 */
     assetsDir: "dist",
-    // outDir: "test-os.dpcq.club",
-    outDir: "admin.dpcq.club",
+    outDir: "test-os.dpcq.club",
+    // outDir: "admin.dpcq.club",
   },
   server: {
     host: true,
@@ -48,8 +48,8 @@ export default defineConfig({
     cors: true, // 允许跨域
     proxy: {
       "/api": {
-        target: "https://admin.dpcq.club",
-        // target: "https://test-os.dpcq.club",
+        // target: "https://admin.dpcq.club",
+        target: "https://test-os.dpcq.club",
         changeOrigin: true,
         // rewrite: (path) => path.replace(/^\/api/, ""),
       },
