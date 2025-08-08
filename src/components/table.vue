@@ -62,7 +62,7 @@ const slots = useSlots();
 const state = reactive({
     tableData: [],
     pageData: {
-        page: 0,
+        page: 1,
         size: 10,
         total: 0,
     },
