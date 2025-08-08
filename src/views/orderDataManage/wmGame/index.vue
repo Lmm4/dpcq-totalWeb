@@ -35,7 +35,7 @@ const columns = [
     { prop: "wmBetLog.tableId", align: "center", label: "桌台ID", width: "auto" },
     { prop: "wmBetLog.bet", align: "center", label: "本局压分", width: "auto" },
     { prop: "wmBetLog.winLoss", align: "center", label: "本局得分", width: "auto" },
-    { prop: "wmBetLog.validBet", align: "center", label: "有效流水", width: "140" },
+    { prop: "wmBetLog.validBet", align: "center", label: "有效投注", width: "140" },
     { prop: "setTime", align: "center", label: "结算时间", width: "180" },
     { prop: "round", align: "center", label: "游戏回合编号", width: "180" },
     { prop: "wmBetLog.ip", align: "center", label: "客户端IP", width: "140" },

@@ -47,7 +47,7 @@ const columns = [
     { prop: "shareholderCount", align: "center", label: "大股东旗下股东数量", width: "160" },
     { prop: "agentCount", align: "center", label: "股东下级代理数量", width: "160" },
     { prop: "memberCount", align: "center", label: "旗下会员数量", width: "160" },
-    { prop: "finalWinLoss", align: "center", label: "总输赢金额", width: "160" },
+    { prop: "finalWinLoss", align: "center", label: "账变信息", width: "160" },
     { prop: "totalRebateAmount", align: "center", label: "总返水金额", width: "160" },
     { prop: "bigShareholderProfitPercent", align: "center", label: "大股东分润比例", width: "160" },
     // { prop: "shareholderProfitPercent", align: "center", label: "股东分润比例", width: "160" },
